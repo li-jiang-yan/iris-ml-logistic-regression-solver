@@ -2,7 +2,7 @@ from sklearn import datasets
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classification_report
 import matplotlib.pyplot as plt
 
 # Load dataset
@@ -27,3 +27,6 @@ y_pred = clf.predict(X_test)
 disp = ConfusionMatrixDisplay(confusion_matrix=confusion_matrix(y_test, y_pred), display_labels=iris.target_names)
 disp.plot()
 plt.show()
+
+# Get the model classification metrics (will only show after the confusion matrix display window is closed)
+print(classification_report(y_test, y_pred, target_names=iris.target_names))
